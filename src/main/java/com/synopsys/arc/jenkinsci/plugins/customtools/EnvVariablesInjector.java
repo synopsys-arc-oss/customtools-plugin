@@ -49,13 +49,13 @@ public class EnvVariablesInjector extends TreeMap<String, EnvVariablesInjector.E
     }
     
     /**
-     * Inject variables into EnvVars
+     * Inject variables into EnvVars.
      * @param target Target variables
      * @throws IOException Exception during modification of EnvVars
      */
     public void Inject(EnvVars target) throws IOException {
         for (Entry<String, EnvVariablesInjector.Entity> entry: entrySet()) {
-            entry.getValue().Inject(target);
+            entry.getValue().doInject(target);
         }
     } 
     
@@ -104,7 +104,7 @@ public class EnvVariablesInjector extends TreeMap<String, EnvVariablesInjector.E
         * @param target Target environment
         * @throws IOException Exception during modification of EnvVars
         */
-        public void Inject(EnvVars target) throws IOException {
+        public void doInject(EnvVars target) throws IOException {
             //TODO: check overrides
             //TODO: check lists 
             //TODO: substitute, check, etc.
